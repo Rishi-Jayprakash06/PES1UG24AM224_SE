@@ -1,0 +1,20 @@
+# Faculty Research Grant & Publication Tracker
+
+## Requirements Table
+
+### Functional Requirements
+
+| ID | Type | Description | Priority | Acceptance Criteria | Rationale |
+|---|---|---|---|---|---|
+| FR-001 | Functional | The system shall allow the Faculty Researcher to create and maintain research grant records, including grant title, funding agency, allocated amount, duration, and current status. | High | Pass: A researcher can create/update a grant and the system stores all mandatory details correctly. Fail: The system permits saving a grant with missing mandatory information. | Centralizes grant information and provides the foundation for tracking sponsored research. |
+| FR-002 | Functional | The system shall allow the Faculty Researcher to record grant-related expenses, including equipment procurement, and automatically calculate the spent amount and remaining grant balance. | High | Pass: Remaining balance is updated accurately after each approved expense and expenses exceeding the grant allocation are blocked. Fail: The system permits expenditure beyond the approved grant limit. | Prevents budget overruns and provides accurate financial tracking. |
+| FR-003 | Functional | The system shall allow the Faculty Researcher to record research publications and maintain publication metrics including indexing status, citation count, journal/conference details, and co-author information. | High | Pass: A publication can be recorded with its required metadata and its indexing and citation information is displayed correctly. Fail: A publication cannot be saved or its recorded metrics are lost or incorrect. | Enables centralized tracking of faculty research output and publication performance. |
+| FR-004 | Functional | The system shall provide a co-author approval workflow in which co-authors can review and approve publication records before they are finalized. | High | Pass: A publication requiring approval remains pending until the required co-author approval is received and the approval status is recorded. Fail: A publication is finalized without the required approval. | Provides a controlled workflow for shared research publications. |
+| FR-005 | Functional | The system shall provide the Research Dean with dashboards and reports showing grant utilization, remaining balances, fund burn-up, publication metrics, and approval status. | High | Pass: The Research Dean can view accurate grant utilization and publication metrics based on current system records. Fail: The dashboard displays outdated or inconsistent financial or publication information. | Gives the Research Dean a consolidated view for monitoring research performance and funding utilization. |
+
+### Non-Functional Requirements
+
+| ID | Type | Description | Priority | Acceptance Criteria | Rationale |
+|---|---|---|---|---|---|
+| NFR-001 | Performance & Security | The system shall maintain an immutable, tamper-evident audit ledger for financial approvals, grant expense modifications, publication approvals, and status changes. | High | Pass: Every relevant modification records the user, timestamp, action, and affected record, and audit entries cannot be altered through normal system operations. Fail: A user can modify or delete an existing audit record. | Ensures traceability and protects financial and publication records from unauthorized modification. |
+| NFR-002 | Performance & Security | The system shall provide authenticated, role-based access and maintain acceptable response performance for grant, publication, approval, and analytics operations under peak academic-office usage. | High | Pass: Faculty Researchers can access only permitted functions, Research Dean functions are available to the Dean role, and supported operations meet the defined response-time target during simulated peak load. Fail: Unauthorized functionality is accessible or system response becomes unacceptable under peak load. | Protects sensitive research and financial information while maintaining system usability during high activity. |
