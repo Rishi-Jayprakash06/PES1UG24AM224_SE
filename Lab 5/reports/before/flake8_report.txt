@@ -1,0 +1,7 @@
+before/student_grade_system.py:6:1: F401 'json' imported but unused
+before/student_grade_system.py:19:80: E501 line too long (81 > 79 characters)
+before/student_grade_system.py:26:5: E722 do not use bare 'except'
+before/student_grade_system.py:31:5: F841 local variable 'grace_marks' is assigned to but never used
+before/student_grade_system.py:32:34: E711 comparison to None should be 'if cond is None:'
+before/student_grade_system.py:34:80: E501 line too long (83 > 79 characters)
+before/student_grade_system.py:43:5: F841 local variable 'avg_score' is assigned to but never used
