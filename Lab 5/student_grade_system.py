@@ -91,7 +91,10 @@ def main() -> None:
     export_grade_sheet()
     token_configured = bool(os.environ.get("GRADE_PORTAL_TOKEN"))
     print("Portal token configured:", token_configured)
-    print("Passing status for S01 after adding the demonstration mark:", check_passing_status("S01"))
+    print(
+        "Passing status for S01 after adding the demonstration mark:",
+        check_passing_status("S01"),
+    )
 
 
 if __name__ == "__main__":

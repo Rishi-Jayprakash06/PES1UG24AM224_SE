@@ -1,0 +1,48 @@
+name: Lab 5 static analysis
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Lab 5/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lab5-static-analysis
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install static-analysis tools
+        run: python -m pip install --upgrade pylint bandit flake8
+
+      - name: Generate before and after reports
+        run: python "Lab 5/run_analysis.py"
+
+      - name: Commit actual reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Lab 5/reports" "Lab 5/report.md"
+          if git diff --cached --quiet; then
+            echo "Reports are already up to date."
+            exit 0
+          fi
+          git commit -m "docs: add generated Lab 5 analysis reports"
+          git push
