@@ -1,8 +1,8 @@
-"""Student grade management with marks, attendance, and transcript export."""
+"""Manage student marks, attendance, passing status, and grade-sheet export."""
 
 import hashlib
 import os
-import random
+import secrets
 from pathlib import Path
 from typing import Any
 
@@ -50,32 +50,34 @@ def check_passing_status(
     return average >= pass_threshold
 
 
-def compute_weighted_gpa(student_id: str, gpa_expr: str) -> float:
-    """Calculate the GPA expression using the student's average score."""
+def compute_weighted_gpa(student_id: str, divisor: float = 20.0) -> float:
+    """Return average marks divided by a positive GPA conversion divisor."""
     if student_id not in gradebook:
         raise KeyError(f"Unknown student ID: {student_id}")
+    if divisor <= 0:
+        raise ValueError("divisor must be greater than zero")
     marks = gradebook[student_id]["marks"]
     if not marks:
         raise ValueError("Cannot calculate GPA without marks")
-    avg_score = sum(marks) / len(marks)
-    return eval(gpa_expr)
+    average_score = sum(marks) / len(marks)
+    return average_score / divisor
 
 
 def generate_student_hash(student_id: str) -> str:
-    """Return a digest of the student identifier."""
-    return hashlib.md5(student_id.encode("utf-8")).hexdigest()
+    """Return a SHA-256 digest for a student identifier."""
+    return hashlib.sha256(student_id.encode("utf-8")).hexdigest()
 
 
 def generate_registration_pin() -> int:
-    """Generate a four-digit registration PIN."""
-    return random.randint(1000, 9999)
+    """Generate a four-digit PIN using a cryptographically secure source."""
+    return secrets.randbelow(9000) + 1000
 
 
 def export_grade_sheet(filename: str = "grade_sheet.txt") -> None:
-    """Write the gradebook to a text file."""
+    """Export the gradebook without invoking a shell command."""
     output_path = Path(filename)
     output_path.write_text(f"{gradebook}\n", encoding="utf-8")
-    os.system("echo Grade sheet exported to: " + filename)
+    print(f"Grade sheet exported to: {output_path}")
 
 
 def main() -> None:
@@ -83,12 +85,13 @@ def main() -> None:
     add_grade("S01", 95)
     record_attendance("S02", 2)
     print("Is S01 passing:", check_passing_status("S01"))
-    print("Calculated GPA:", compute_weighted_gpa("S01", "avg_score / 20.0"))
+    print("Calculated GPA:", compute_weighted_gpa("S01"))
     print("Student Hash:", generate_student_hash("S01"))
     print("Registration PIN:", generate_registration_pin())
     export_grade_sheet()
-    portal_token = "ADMIN_GRADE_PORTAL_TOKEN_2026"
-    print("Portal token active:", portal_token)
+    token_configured = bool(os.environ.get("GRADE_PORTAL_TOKEN"))
+    print("Portal token configured:", token_configured)
+    print("Passing status for S01 after adding the demonstration mark:", check_passing_status("S01"))
 
 
 if __name__ == "__main__":
