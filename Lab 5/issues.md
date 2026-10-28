@@ -1,6 +1,6 @@
 # Lab 5 — Issue Log
 
-Line numbers in this table refer to `before/student_grade_system.py`, copied from the assigned repository. Tool rule identifiers are listed where applicable; confirm exact findings and severities in the generated version-specific reports.
+Line numbers in this table refer to `before/student_grade_system.py`, copied from the assigned repository. Tool rule identifiers are listed where applicable; confirm exact findings and severities in the reports for each version.
 
 | Issue | Type / tool | Baseline line(s) | Description / risk | Fix approach |
 |---|---|---:|---|---|

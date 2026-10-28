@@ -16,4 +16,4 @@ The highest-risk source patterns included dynamic `eval`, a hard-coded token, an
 
 ## 4. What was learned, and what still needs verification?
 
-Code can appear to work while still containing security and maintenance risks. Static-analysis tools help locate suspicious patterns, but their findings need context and human review. I should also test boundary cases, including an unknown student ID, negative marks, attendance above 100, an invalid GPA divisor, and file-write failures. The final Pylint score and Bandit/Flake8 findings must be taken from the generated reports rather than assumed in advance.
+Code can appear to work while still containing security and maintenance risks. Static-analysis tools help locate suspicious patterns, but their findings need context and human review. I should also test boundary cases, including an unknown student ID, negative marks, attendance above 100, an invalid GPA divisor, and file-write failures. The final Pylint score and Bandit/Flake8 findings must be taken from the saved reports rather than assumed in advance.

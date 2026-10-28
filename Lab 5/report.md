@@ -1,6 +1,6 @@
 # Lab 5 — Static Analysis Report
 
-Generated: 2026-10-28 03:13:38 UTC
+Run date: 2026-10-28 03:13:38 UTC
 
 ## Measured before/after results
 

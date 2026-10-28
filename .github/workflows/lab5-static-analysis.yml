@@ -32,10 +32,10 @@ jobs:
       - name: Install static-analysis tools
         run: python -m pip install --upgrade pylint bandit flake8
 
-      - name: Generate before and after reports
+      - name: Run before and after checks
         run: python "Lab 5/run_analysis.py"
 
-      - name: Commit actual reports
+      - name: Save analysis reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -44,5 +44,5 @@ jobs:
             echo "Reports are already up to date."
             exit 0
           fi
-          git commit -m "docs: add generated Lab 5 analysis reports"
+          git commit -m "docs: add Lab 5 analysis results"
           git push

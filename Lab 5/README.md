@@ -1,6 +1,6 @@
 # Lab 5 — Static Code Analysis
 
-This folder contains the assigned Student Grade System, the cleaned implementation, issue log, reflection, and an automated script that generates real before-and-after reports from Pylint, Bandit, and Flake8.
+This folder contains the assigned Student Grade System, the revised source, issue log, reflection, and a script to run Pylint, Bandit, and Flake8 on both versions.
 
 ## Files
 
@@ -12,7 +12,7 @@ This folder contains the assigned Student Grade System, the cleaned implementati
 - `run_analysis.ps1` — Windows helper that installs the tools and runs the analysis.
 - `reports/before/` — baseline Pylint, Bandit, and Flake8 results.
 - `reports/after/` — final Pylint, Bandit, and Flake8 results.
-- `.github/workflows/lab5-static-analysis.yml` — runs analysis and commits generated reports when pushed to `main`.
+- `.github/workflows/lab5-static-analysis.yml` — runs the checks and saves the reports when changes are pushed to `main`.
 
 ## Run locally on Windows
 
@@ -42,4 +42,4 @@ The report files are actual tool output. The Flake8 output file may be empty whe
 
 ## Commits
 
-The main fixes are organized into three commits: Pylint/code quality, Bandit/security, and Flake8 formatting plus supporting documentation and automation. A separate automated report commit may appear after the workflow generates the six reports.
+The main fixes are organized into three commits: Pylint/code quality, Bandit/security, and Flake8 formatting plus supporting documentation and automation. The workflow may add a separate commit with the six analysis reports.

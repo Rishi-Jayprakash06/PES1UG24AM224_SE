@@ -120,7 +120,7 @@ def build_report(results: dict[str, dict[str, dict[str, Any]]]) -> str:
     lines = [
         "# Lab 5 — Static Analysis Report",
         "",
-        f"Generated: {timestamp}",
+        f"Run date: {timestamp}",
         "",
         "## Measured before/after results",
         "",
@@ -189,7 +189,7 @@ def main() -> int:
             }
             print(f"{stage}: {tool} report saved (exit {returncode})")
     (ROOT / "report.md").write_text(build_report(results), encoding="utf-8")
-    print("Updated report.md with measured tool results.")
+    print("Updated report.md with the analysis results.")
     return 0
 
 
