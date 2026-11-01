@@ -1,17 +1,18 @@
 # Lab 6 - Code and Branch Coverage
 
-This folder contains the two test suites for the Salon Booking exercise.
+This folder contains the Salon Booking application and the two test suites.
 
 ## Files
 
+- `salon_booking.py` contains the application code.
 - `CodeCoverageTest_salon_booking.py` checks the main code paths and error cases.
 - `BranchCoverageTest_salon_booking.py` checks the true and false outcomes of the decisions.
-- `code_coverage_output.png` shows the line coverage run.
-- `branch_coverage_output.png` shows the branch coverage run.
+- `Lab 6 Code Coverage.png` shows the code coverage run.
+- `Lab 6 Branch Coverage.png` shows the branch coverage run.
 
 ## Run the tests
 
-Keep these files in the same folder as the assigned `salon_booking.py` file. Install the tools with:
+Install the required tools with:
 
 ```bash
 python -m pip install pytest coverage
@@ -34,4 +35,4 @@ coverage report -m salon_booking.py
 
 ## Results
 
-Both test suites passed locally against the assigned `salon_booking.py` file. The code coverage run reported 100% statement coverage. The branch coverage run reported 100% coverage, with all 26 branches covered.
+Both test suites passed against `salon_booking.py`. The code coverage run reported 100% statement coverage. The branch coverage run reported 100% coverage, with all 26 branches covered.
